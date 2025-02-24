@@ -40,7 +40,7 @@ through querying target LLMs, which efficiently enhances performance and reduces
 
 
 ## Performance
-<img src=".\img\tab1.jpg">
+<img src=".\img\tab1.png">
 Tab. 1: A comparison of jailbreaking methods evaluates universality, adaptability, and efficiency. L: Low, exceeding 50 queries; M: Mid, exceeding 20 queries; H: High, within 10 queries.
 
 <img src=".\img\tab2.jpg">
@@ -49,7 +49,7 @@ rate (JSR) and average number of queries, respectively. Since GCG requires white
 can only report its results on open-sourced models. * denotes results derived from the original source. †[3, 11, 13] is in the same way. In each column, the best results are bolded.
 
 ## Example
-
+<img src=".\img\demo.jpg">
 Run the `./llm_main.py` script to test the performance of AutoBreach.
 
 First, you need to add your OpenAI API key to system environment variables. The method to do this depends on your operating system and the shell you're using.
