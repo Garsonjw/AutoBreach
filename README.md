@@ -3,7 +3,7 @@
 ## News
 AutoBreach has been accepted by the Findings of the Association for Computational Linguistics: NAACL 2025.
 ## Overview
-<img src="./img/overview.jpg" alt="Overview" width="500" height="300">
+<img src="./img/overview.jpg" alt="Overview" width="800" height="300">
 Despite the widespread application of large language models (LLMs) across various
 tasks, recent studies indicate that they are susceptible to jailbreak attacks, which can
 render their defense mechanisms ineffective. However, previous jailbreak research
