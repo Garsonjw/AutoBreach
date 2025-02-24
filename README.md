@@ -3,7 +3,7 @@
 ## News
 AutoBreach has been accepted by the Findings of the Association for Computational Linguistics: NAACL 2025.
 ## Overview
-<img src=".\img\overview.jpg">
+<img src="./img/overview.jpg" alt="Overview" width="500" height="300">
 Despite the widespread application of large language models (LLMs) across various
 tasks, recent studies indicate that they are susceptible to jailbreak attacks, which can
 render their defense mechanisms ineffective. However, previous jailbreak research
@@ -91,12 +91,12 @@ python llm_main.py
 
 ## Citation
 ```
-@article{tian2023evil,
-  title={Evil Geniuses: Delving into the Safety of LLM-based Agents},
-  author={Tian, Yu and Yang, Xiao and Zhang, Jingyuan and Dong, Yinpeng and Su, Hang},
-  journal={arXiv preprint arXiv:2311.11855},
-  year={2023}
+@article{chen2024autobreach,
+  title={Autobreach: Universal and adaptive jailbreaking with efficient wordplay-guided optimization},
+  author={Chen, Jiawei and Yang, Xiao and Fang, Zhengwei and Tian, Yu and Dong, Yinpeng and Yin, Zhaoxia and Su, Hang},
+  journal={arXiv preprint arXiv:2405.19668},
+  year={2024}
 }
 ```
 ## Contact
-For more information please contact tianyu1810613@gmail.com.
+For more information please contact 52285904015@stu.ecnu.edu.cn.
