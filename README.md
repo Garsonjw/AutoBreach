@@ -43,7 +43,7 @@ through querying target LLMs, which efficiently enhances performance and reduces
 <img src=".\img\tab1.png">
 Tab. 1: A comparison of jailbreaking methods evaluates universality, adaptability, and efficiency. L: Low, exceeding 50 queries; M: Mid, exceeding 20 queries; H: High, within 10 queries.
 
-<img src=".\img\tab2.jpg" alt="tab2" width="1000" height="400">
+<img src=".\img\tab2.jpg" alt="tab2" width="1000" height="350">
 Tab. 2: Jailbreak attacks on the AdvBench subset. JSR and Queries represent the jailbreak success
 rate (JSR) and average number of queries, respectively. Since GCG requires white-box access, we
 can only report its results on open-sourced models. * denotes results derived from the original source. †[3, 11, 13] is in the same way. In each column, the best results are bolded.
