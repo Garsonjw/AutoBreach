@@ -1,34 +1,56 @@
-# Evil Geniuses: Delving into the Safety of LLM-based Agents
+# AutoBreach: Universal and Adaptive Jailbreaking with Efficient Wordplay-Guided Optimization
 
+## News
+AutoBreach has been accepted by the Findings of the Association for Computational Linguistics: NAACL 2025.
 ## Overview
-<img src=".\img\overview.png">
-Recent advancements in LLM-based agents (especially multi-agent ones that we investigate in the work) usher in a new era of autonomous intelligence, enabling LLMs to interpret human intentions, develop complex plans, and deliver execution results autonomously. Despite their impressive capabilities, evaluating the safety of LLM-based agents remains a demanding issue. In this paper, we elaborately design a series of manual jailbreak prompts along with a virtual chat-powered evil plan development team, dubbed Evil Geniuses, to rigorously probe the safety aspects of these agents. Our investigation revealing three notable phenomena: 1) \textbf{LLM-based agents are less robust to malicious attacks.} 2) \textbf{The attacked agents could exhibit more nuanced responses.} 3) \textbf{The produced improper answers are tougher to detect.} Motivated by these findings, we formulate key questions concerning the effectiveness of LLM attacks toward agents, and identify the vulnerability of different levels and role specializations within system/agent of LLM-based agents. Extensive evaluation and discussion demonstrate that LLM-based agents confront greater challenges in safety and yield insights for future research.
+<img src=".\img\overview.jpg">
+Despite the widespread application of large language models (LLMs) across various
+tasks, recent studies indicate that they are susceptible to jailbreak attacks, which can
+render their defense mechanisms ineffective. However, previous jailbreak research
+has frequently been constrained by limited universality, suboptimal efficiency, and
+a reliance on manual crafting. In response, we rethink the approach to jailbreaking
+LLMs and formally define three essential properties from the attacker’s perspective,
+which contributes to guiding the design of jailbreak methods. We further introduce
+AutoBreach, a novel method for jailbreaking LLMs that requires only black-box
+access. Inspired by the versatility of wordplay, AutoBreach employs a wordplayguided mapping rule sampling strategy to generate a variety of universal mapping
+rules for creating adversarial prompts. This generation process leverages LLMs’
+automatic summarization and reasoning capabilities, thus alleviating the manual
+burden. To boost jailbreak success rates, we further suggest sentence compression
+and chain-of-thought-based mapping rules to correct errors and wordplay misinterpretations in target LLMs. Additionally, we propose a two-stage mapping rule
+optimization strategy that initially optimizes mapping rules before querying target
+LLMs to enhance the efficiency of AutoBreach. AutoBreach can efficiently identify
+security vulnerabilities across various LLMs, including three proprietary models:
+Claude-3, GPT-3.5, GPT-4 Turbo, and two LLMs’ web platforms: Bingchat, GPT-4
+Web, achieving an average success rate of over 80% with fewer than 10 queries.
 
 
-## 24.02.04
-We develop an agent using the Hugging Chat Assistant framework, intend strictly for scientific research purposes. Please ensure it is not employed in any unlawful contexts.
-[https://huggingface.co/chat/conversation/65bf38bf99714ca3fd235dc9](https://hf.co/chat/assistant/65bf38aa60ffc5f4b2487999)
 ## Methods
-<img src=".\img\method.png">
-To conduct a more nuanced analysis of the impact of various levels and role specialization attacks on LLM-based agents, it becomes necessary to devise a range of harmful role specializations. Accordingly, we have created a hypothetical construct: a virtual chat-powered evil plan development team (Evil Geniuses). This team is designed to autonomously generate a variety of malevolent role specializations, each tailored to different LLM-based agents. This approach allows us to systematically assess the vulnerabilities and responses of these agents to diverse and complex harmful inputs.
+To address the challenges, we propose AutoBreach, a novel method utilizing multi-LLMs for
+automatically jailbreaking that only requires black-box access to target LLMs with a few queries, as
+shown in Fig. 1. To enhance universality and adaptability, we introduce wordplay-guided mapping
+rule sampling that generates innovative and diverse wordplay mapping rules. Specifically, inspired by
+the universality of wordplay strategies [2, 21, 23, 25], AutoBreach leverages the inductive reasoning
+of an LLM (Attacker) about wordplay to generate a variety of universal mapping rules, requiring
+no human intervention. Furthermore, due to errors from long sentences and misinterpretations of
+wordplay by target LLMs, we propose sentence compression and chain-of-thought-based (CoTbased) mapping rules which refine jailbreak goals and enhance the comprehension of target LLMs
+to enhance jailbreak success rates (JSR). To ensure efficiency, we propose a two-stage mapping
+rule optimization. The core idea is the interaction between the roles of Attacker and Supervisor
+to execute an initial optimization stage. By this stage before iteratively refining the mapping rule
+through querying target LLMs, which efficiently enhances performance and reduces queries.
+
 
 ## Performance
-<img src=".\img\tab1.png">
-Tab. 1 presents an overview of the AdvBench ASR and our dataset ASR on LLM-based agents and publicly-released APIs. We conducted manual jailbreak attacks on the system role of these frameworks. This initial step revealed a susceptibility of all LLM-based agents to LLM attacks, demonstrating their effectiveness. 
+<img src=".\img\tab1.jpg">
+Tab. 1: A comparison of jailbreaking methods evaluates universality, adaptability, and efficiency. L: Low, exceeding 50 queries; M: Mid, exceeding 20 queries; H: High, within 10 queries.
 
-<img src=".\img\tab2.png">
-Tab. 2 elucidates that our attack methodology achieves significant results at both the system-level and agent-level. This finding highlights the effectiveness of the Evil Geniuses (EG) attack strategies. Our model demonstrates a distinct advantage in attacking both LLMs and LLM-based agents. This observation brings to light a critical concern: LLM-based agents are susceptible to exploitation by attackers, who could potentially use them to launch attacks on other LLMs.
+<img src=".\img\tab2.jpg">
+Tab. 2: Jailbreak attacks on the AdvBench subset. JSR and Queries represent the jailbreak success
+rate (JSR) and average number of queries, respectively. Since GCG requires white-box access, we
+can only report its results on open-sourced models. * denotes results derived from the original source. †[3, 11, 13] is in the same way. In each column, the best results are bolded.
 
 ## Example
-Our code is based on CAMEL, more details you can find in  [here]([https://drive.google.com/file/d/194PPaSTBR07m-PzjS-Ty6KlPLdFIPQDd/view?usp=share_link](https://github.com/camel-ai/camel))
 
-Go to folder "Evil_Geniuses"
-
-Run the `./examples/Evil_Geniuses/system_playing.py` script to generate the agent role
-
-Run the `./examples/Evil_Geniuses/role_playing.py` script to generate the system role
-
-Once we have the generated role, we can put Prompt writer's prompts+ Prompt writer's response（generated role） into the System Prompt in LLM-based agents to define the evil role of system/agent.
+Run the `./llm_main.py` script to test the performance of AutoBreach.
 
 First, you need to add your OpenAI API key to system environment variables. The method to do this depends on your operating system and the shell you're using.
 
@@ -62,17 +84,10 @@ Replace `<insert your OpenAI API key>` with your actual OpenAI API key in each c
 After setting the OpenAI API key, you can run the script:
 
 ```bash
-# You can change the role pair and initial prompt in role_playing.py
-python examples/ai_society/role_playing.py
+python llm_main.py
 ```
 
-Please note that the environment variable is session-specific. If you open a new terminal window or tab, you will need to set the API key again in that new session.
 
-## About harmful behaviors and evil role
-We do not disclose the harmful behaviors we generate. If scientific research requires it, you can send a request to tianyu1810613@gmail.com. We will give you the evil roles and harmful behaviors we generate.
-
-## ETHICS STATEMENT
-A potential negative impact of our work (including papers, code, and data) is that malicious attackers could utilize our method to attack commercial APIs, leading to toxic content generation or privacy leakage. Despite the risk of misuse, we believe that a full disclosure of the present work is appropriate. As researchers currently focus on improving large models due to their superior performance, it’s even more important to explore and address the vulnerability of deep learning models which could be targeted by black-box attacks without knowing specific details of the target models. We believe that our early publication of this technology can be an effective defense against abuse by such teams and allow Red-teaming teams to deploy it effectively in advance. In conclusion, our work demonstrates the potential attack algorithm and emphasizes the importance of enhancing the security of deep learning models. 
 
 ## Citation
 ```
