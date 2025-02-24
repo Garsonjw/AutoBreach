@@ -3,7 +3,7 @@
 ## News
 AutoBreach has been accepted by the Findings of the Association for Computational Linguistics: NAACL 2025.
 ## Overview
-<img src="./img/overview.jpg" alt="Overview" width="800" height="300">
+<img src="./img/overview.jpg" alt="Overview" width="1000" height="400">
 Despite the widespread application of large language models (LLMs) across various
 tasks, recent studies indicate that they are susceptible to jailbreak attacks, which can
 render their defense mechanisms ineffective. However, previous jailbreak research
@@ -43,7 +43,7 @@ through querying target LLMs, which efficiently enhances performance and reduces
 <img src=".\img\tab1.png">
 Tab. 1: A comparison of jailbreaking methods evaluates universality, adaptability, and efficiency. L: Low, exceeding 50 queries; M: Mid, exceeding 20 queries; H: High, within 10 queries.
 
-<img src=".\img\tab2.jpg" alt="tab2" width="800" height="500">
+<img src=".\img\tab2.jpg" alt="tab2" width="1000" height="500">
 Tab. 2: Jailbreak attacks on the AdvBench subset. JSR and Queries represent the jailbreak success
 rate (JSR) and average number of queries, respectively. Since GCG requires white-box access, we
 can only report its results on open-sourced models. * denotes results derived from the original source. †[3, 11, 13] is in the same way. In each column, the best results are bolded.
